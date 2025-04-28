@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Soil Moisture Monitor</title>
+
+    <style>
+        body {
+            background-color: #e0f7fa;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding-top: 50px;
+            margin: 0;
+        }
+
+        .container {
+            background-color: #ffffff;
+            margin: auto;
+            padding: 30px;
+            border-radius: 10px;
+            width: 400px;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .status {
+            font-size: 30px;
+            font-weight: bold;
+            margin-top: 20px;
+            color: #00796b;
+        }
+    </style>
+
+    <script>
+        function fetchSoilStatus() {
+            fetch('moisture.php')
+            .then(response => response.text())
+            .then(data => {
+                const statusDiv = document.getElementById('soilStatus');
+                statusDiv.textContent = data;
+
+                // Optional: change background based on condition
+                if (data.includes("Dry")) {
+                    document.body.style.backgroundColor = "#ffccbc"; // light red
+                } else if (data.includes("Wet")) {
+                    document.body.style.backgroundColor = "#dcedc8"; // light green
+                } else if (data.includes("Very Wet")) {
+                    document.body.style.backgroundColor = "#b3e5fc"; // light blue
+                } else {
+                    document.body.style.backgroundColor = "#e0f7fa"; // default
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching soil status:', error);
+                document.getElementById('soilStatus').textContent = "Error loading status.";
+            });
+        }
+
+        // Fetch soil status every 5 seconds
+        setInterval(fetchSoilStatus, 5000);
+
+        // Fetch immediately when page loads
+        window.onload = fetchSoilStatus;
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <h1>🌱 Smart Garden Soil Status 🌱</h1>
+        <div id="soilStatus" class="status">Loading...</div>
+    </div>
+</body>
+</html>

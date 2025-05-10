@@ -1,72 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Soil Moisture Monitor</title>
-
-    <style>
-        body {
-            background-color: #e0f7fa;
-            font-family: Arial, sans-serif;
-            text-align: center;
-            padding-top: 50px;
-            margin: 0;
-        }
-
-        .container {
-            background-color: #ffffff;
-            margin: auto;
-            padding: 30px;
-            border-radius: 10px;
-            width: 400px;
-            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        .status {
-            font-size: 30px;
-            font-weight: bold;
-            margin-top: 20px;
-            color: #00796b;
-        }
-    </style>
-
-    <script>
-        function fetchSoilStatus() {
-            fetch('moisture.php')
-            .then(response => response.text())
-            .then(data => {
-                const statusDiv = document.getElementById('soilStatus');
-                statusDiv.textContent = data;
-
-                // Optional: change background based on condition
-                if (data.includes("Dry")) {
-                    document.body.style.backgroundColor = "#ffccbc"; // light red
-                } else if (data.includes("Wet")) {
-                    document.body.style.backgroundColor = "#dcedc8"; // light green
-                } else if (data.includes("Very Wet")) {
-                    document.body.style.backgroundColor = "#b3e5fc"; // light blue
-                } else {
-                    document.body.style.backgroundColor = "#e0f7fa"; // default
-                }
-            })
-            .catch(error => {
-                console.error('Error fetching soil status:', error);
-                document.getElementById('soilStatus').textContent = "Error loading status.";
-            });
-        }
-
-        // Fetch soil status every 5 seconds
-        setInterval(fetchSoilStatus, 5000);
-
-        // Fetch immediately when page loads
-        window.onload = fetchSoilStatus;
-    </script>
+  <meta charset="UTF-8" />
+  <title>Smart Garden</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #e0f7fa;
+    }
+    header {
+      background-color: #00796b;
+      padding: 15px;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .menu {
+      display: none;
+      flex-direction: column;
+      background-color: #004d40;
+      position: absolute;
+      top: 60px;
+      left: 0;
+      width: 100%;
+    }
+    .menu a {
+      padding: 15px;
+      text-decoration: none;
+      color: white;
+      border-top: 1px solid #00695c;
+    }
+    .hamburger {
+      cursor: pointer;
+      font-size: 24px;
+    }
+    main {
+      text-align: center;
+      padding: 60px 20px;
+    }
+  </style>
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById("menu");
+      menu.style.display = menu.style.display === "flex" ? "none" : "flex";
+    }
+  </script>
 </head>
-
 <body>
-    <div class="container">
-        <h1>🌱 Smart Garden Soil Status 🌱</h1>
-        <div id="soilStatus" class="status">Loading...</div>
-    </div>
+  <header>
+    <h2>🌱 Smart Garden</h2>
+    <div class="hamburger" onclick="toggleMenu()">☰</div>
+  </header>
+
+  <div id="menu" class="menu">
+    <a href="index.html">🏠 Home</a>
+    <a href="moisture.html">💧 Moisture Monitor</a>
+    <a href="about.html">👨‍💻 About Me</a>
+  </div>
+
+  <main>
+    <h1>Welcome to the Smart Garden</h1>
+    <p>Monitor soil moisture, automate watering, and keep your garden healthy!</p>
+  </main>
 </body>
 </html>

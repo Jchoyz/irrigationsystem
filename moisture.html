@@ -30,6 +30,7 @@
         }
     </style>
 
+    <!-- Fetching Data for moisture levels-->
     <script>
         function fetchSoilStatus() {
             fetch('moisture.php')
@@ -61,12 +62,45 @@
         // Fetch immediately when page loads
         window.onload = fetchSoilStatus;
     </script>
+
+
+<!-- Script for shared headers -->
+    <script>
+        // Load the shared header + menu
+        fetch('header.html')
+            .then(res => res.text())
+            .then(data => {
+            document.getElementById('header-placeholder').innerHTML = data;
+            });
+
+        // Keep the same toggle/close functions after loading
+        function toggleMenu() {
+            const menu = document.getElementById('menu');
+            const toggle = document.querySelector('.menu-toggle');
+            menu.classList.toggle('open');
+            toggle.classList.toggle('active');
+        }
+
+        function closeMenu() {
+            const menu = document.getElementById('menu');
+            const toggle = document.querySelector('.menu-toggle');
+            menu.classList.remove('open');
+            toggle.classList.remove('active');
+        }
+    </script>
+
 </head>
 
 <body>
+    <!-- For the Top Page Header -->
+    <div id="header-placeholder"></div>
+
+
+    
     <div class="container">
         <h1>🌱 Smart Garden Soil Status 🌱</h1>
         <div id="soilStatus" class="status">Loading...</div>
     </div>
 </body>
+
 </html>

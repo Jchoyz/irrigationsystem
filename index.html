@@ -1,66 +1,155 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Smart Irrigation System</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #f5f5f5;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Irrigation System</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+        }
 
-    .content {
-      margin: 50px 20px 20px 20px;
-      padding: 20px;
-      max-width: 800px;
-      margin-left: auto;
-      margin-right: auto;
-    }
+        header {
+            height: 60px; /* shorter header */
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            background-color: #00695c;
+            color: white;
+            gap: 20px;
+            overflow: visible;
+        }
 
-    /* Optional: Prevent header overlap if needed */
-    #header-placeholder {
-      margin-bottom: 60px;
-    }
-  </style>
+        header img {
+            height: 80px;
+            margin-right: 10px;
+            margin-top: -10px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            font-family: 'Linux Libertine', Georgia, serif;
+            font-size: 30px;
+            font-weight: bold;
+        }
+
+        .menu-toggle {
+            font-size: 30px;        /* smaller size */
+            padding: 5px 20px;      /* tighter spacing */
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: white;
+        }
+
+
+        nav {
+            position: fixed;
+            top: 50px;
+            left: -220px; /* hidden off-screen initially */
+            width: 180px;
+            height: auto;
+            background-color: #004d40;
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+            transition: left 0.3s ease;
+            z-index: 1000;
+            backdrop-filter: blur(3px); /* optional, adds modern look */
+        }
+
+
+
+
+        nav a {
+            display: block;
+            color: white;
+            padding: 12px 20px;
+            text-decoration: none;
+        }
+
+        nav a:hover {
+            background-color: #00695c;
+        }
+
+        nav.open {
+            left: 40px;     /*Reveals the floating menu */
+        }
+
+        .content {
+            margin: 50px 20px 20px 20px;
+            padding: 20px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* For phone/tablet size */
+        /*@media (max-width: 768px) {       
+            .menu-toggle {
+                display: block;
+            }
+          } */
+    </style>
 </head>
 <body>
+    <!-- For the TOP page Header -->
+    <!--<div id="header-placeholder"></div>-->
 
-  <!-- This will be replaced with the header + menu via JS -->
-  <div id="header-placeholder"></div>
 
-  <div class="content">
-    <h1>Welcome to the Smart Irrigation System</h1>
-    <p>
-      This project is designed to automate plant watering by monitoring soil moisture levels using wireless sensors
-      and a custom microcontroller system. It ensures optimal hydration with minimal manual intervention, helping
-      save time and water.
-    </p>
-  </div>
+    <header>
+        <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+        <div class="brand">
+            <img src="GrowSMartLogo.png" alt="Logo">
+            GrowSMart
+        </div>
+    </header>
 
-  <!-- Load shared header and nav -->
-  <script>
-    fetch('header.html')
-      .then(res => res.text())
-      .then(data => {
-        document.getElementById('header-placeholder').innerHTML = data;
-      });
+    <nav id="menu">
+        <h3>Main menu</h3>
+        <hr>
+        <a href="#" onclick="closeMenu()">Home</a>
+        <a href="moisture.html">Moisture Levels</a>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
 
-    function toggleMenu() {
-      const menu = document.getElementById('menu');
-      const toggle = document.querySelector('.menu-toggle');
-      menu.classList.toggle('open');
-      toggle.classList.toggle('active');
-    }
+        <h3>Services</h3>
+        <hr>
+        <a href="help.html">Help</a>
+    </nav>
 
-    function closeMenu() {
-      const menu = document.getElementById('menu');
-      const toggle = document.querySelector('.menu-toggle');
-      menu.classList.remove('open');
-      toggle.classList.remove('active');
-    }
-  </script>
+
+    <div class="content">
+      <h1>Welcome to the Smart Irrigation System</h1>
+      <p>
+        This project is designed to automate plant watering by monitoring soil moisture levels using wireless sensors
+        and a custom microcontroller system. It ensures optimal hydration with minimal manual intervention, helping
+        save time and water.
+      </p>
+    </div>
+
+    <script>
+      function toggleMenu() {
+        const menu = document.getElementById('menu');
+        menu.classList.toggle('open');
+      }
+    </script>
+
+    <script>
+      function toggleMenu() {
+        const menu = document.getElementById('menu');
+        menu.classList.toggle('open');
+      }
+
+      function closeMenu() {
+        const menu = document.getElementById('menu');
+        menu.classList.remove('open');
+      }
+    </script>
 
 </body>
 </html>

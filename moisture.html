@@ -63,8 +63,21 @@
         window.onload = fetchSoilStatus;
     </script>
 
+</head>
 
-<!-- Script for shared headers -->
+
+<body>
+    <!-- For the Top Page Header -->
+    <div id="header-placeholder"></div>
+
+
+    <div class="container">
+        <h1>🌱 Smart Garden Soil Status 🌱</h1>
+        <div id="soilStatus" class="status">Loading...</div>
+    </div>
+
+
+    <!-- Script for shared headers -->
     <script>
         // Load the shared header + menu
         fetch('header.html')
@@ -88,19 +101,6 @@
             toggle.classList.remove('active');
         }
     </script>
-
-</head>
-
-<body>
-    <!-- For the Top Page Header -->
-    <div id="header-placeholder"></div>
-
-
-    
-    <div class="container">
-        <h1>🌱 Smart Garden Soil Status 🌱</h1>
-        <div id="soilStatus" class="status">Loading...</div>
-    </div>
 </body>
 
 </html>

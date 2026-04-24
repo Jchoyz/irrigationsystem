@@ -51,9 +51,9 @@
         document.getElementById("tempStatus").textContent = data.temperature + " °C";
         document.getElementById("humStatus").textContent = data.humidity + " %";
 
-        if (data.soil < 40) {
+        if (data.soil == "DRY") {
           document.body.style.backgroundColor = "#ffccbc";
-        } else if (data.soil > 100) {
+        } else if (data.soil == "WET") {
           document.body.style.backgroundColor = "#b3e5fc";
         } else {
           document.body.style.backgroundColor = "#dcedc8";
@@ -64,8 +64,8 @@
       });
   }
 
-    setInterval(fetchSoilStatus, 5000);
-    window.onload = fetchSoilStatus;
+    setInterval(fetchSensorData, 5000);
+    window.onload = fetchSensorData;
   </script>
 </body>
 </html>

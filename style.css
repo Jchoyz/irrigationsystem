@@ -1,0 +1,112 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+}
+
+header {
+  height: 100px;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #00695c;
+  color: white;
+  gap: 20px;
+  overflow: visible;
+}
+
+header img {
+  height: 80px;
+  margin-right: 10px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Linux Libertine", Georgia, serif;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.menu-toggle {
+  font-size: 30px;
+  padding: 5px 20px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  color: white;
+}
+
+nav {
+  position: fixed;
+  top: 70px;
+  left: -240px;
+  width: 180px;
+  background-color: #004d40;
+  color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+  transition: left 0.3s ease;
+  z-index: 1000;
+  backdrop-filter: blur(3px);
+}
+
+nav.open {
+  left: 40px;
+}
+
+nav h3 {
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+nav a {
+  display: block;
+  color: white;
+  padding: 10px 0;
+  text-decoration: none;
+}
+
+nav a:hover {
+  background-color: #00695c;
+  padding-left: 8px;
+}
+
+.content {
+  max-width: 800px;
+  margin: 50px auto 20px auto;
+  padding: 20px;
+}
+
+.content h1 {
+  color: #00695c;
+}
+
+
+.container {
+  background-color: #ffffff;
+  margin: 80px auto 0 auto;
+  padding: 30px;
+  border-radius: 10px;
+  width: 400px;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.status {
+  font-size: 30px;
+  font-weight: bold;
+  margin-top: 20px;
+  color: #00796b;
+}
+
+
+.sensor-card {
+  margin-top: 20px;
+  padding: 15px;
+  border-radius: 8px;
+  background-color: #f5f5f5;
+}

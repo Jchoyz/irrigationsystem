@@ -116,16 +116,21 @@ nav a:hover {
 
 
 
+/* Hide manual controls when not in manual mode */
+.hidden {
+  display: none;
+}
+
+/* Pump control buttons */
 .control-btn {
-  display: block;
-  width: 100%;
-  margin: 10px 0;
-  padding: 12px;
+  display: inline-block;
+  margin: 10px 5px;
+  padding: 10px 15px;
   border: none;
-  border-radius: 8px;
+  border-radius: 6px;
   background-color: #00695c;
   color: white;
-  font-size: 16px;
+  font-size: 14px;
   cursor: pointer;
 }
 
@@ -133,10 +138,20 @@ nav a:hover {
   background-color: #004d40;
 }
 
+/* ON button */
 .control-btn.on {
   background-color: #2e7d32;
 }
 
+.control-btn.on:hover {
+  background-color: #1b5e20;
+}
+
+/* OFF button */
 .control-btn.off {
   background-color: #c62828;
+}
+
+.control-btn.off:hover {
+  background-color: #8e0000;
 }

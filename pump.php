@@ -2,9 +2,9 @@
 $file = "/var/www/html/irrigationsystem/pump_command.json";
 
 $current = [
-    "mode" => "automatic"
+    "mode" => "automatic",
     "pump" => "auto"
-]
+];
 
 if (file_exists($file)) {
     $old = json_decode(file_get_contents($file), true);
@@ -16,14 +16,14 @@ if (file_exists($file)) {
 if (isset($_GET["mode"])) {
     $current["mode"] = $_GET["mode"];
 
-    if ($_GET["mode"] == "automatic") {
+    if ($_GET["mode"] === "automatic") {
         $current["pump"] = "auto";
     }
 }
 
-if (isset($_GET["pump"]) {
+if (isset($_GET["pump"])) {
     $current["pump"] = $_GET["pump"];
-})
+}
 
 file_put_contents($file, json_encode($current));
 

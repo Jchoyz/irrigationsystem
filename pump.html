@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Pump Control</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div id="header-placeholder"></div>
+
+  <main class="container">
+    <h1>🚿 Pump Control</h1>
+
+    <div class="sensor-card">
+      <h2>Operating Mode</h2>
+
+      <button class="control-btn" onclick="setMode('automatic')">Automatic Mode</button>
+      <button class="control-btn" onclick="setMode('manual')">Manual Mode</button>
+      <button class="control-btn" onclick="setMode('scheduled')">Scheduled Mode</button>
+
+      <div id="modeStatus" class="status">Mode: Loading...</div>
+    </div>
+
+    <div class="sensor-card">
+      <h2>Manual Pump Control</h2>
+
+      <button class="control-btn on" onclick="setPump('on')">Pump ON</button>
+      <button class="control-btn off" onclick="setPump('off')">Pump OFF</button>
+
+      <div id="pumpStatus" class="status">Pump: Loading...</div>
+    </div>
+  </main>
+
+  <script>
+    fetch("header.html")
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById("header-placeholder").innerHTML = data;
+      });
+
+    function toggleMenu() {
+      document.getElementById("menu").classList.toggle("open");
+    }
+
+    function closeMenu() {
+      document.getElementById("menu").classList.remove("open");
+    }
+
+    function setMode(mode) {
+      fetch("pump.php?mode=" + mode)
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById("modeStatus").textContent = "Mode: " + mode.toUpperCase();
+          console.log(data);
+        });
+    }
+
+    function setPump(state) {
+      fetch("pump.php?pump=" + state)
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById("pumpStatus").textContent = "Pump: " + state.toUpperCase();
+          console.log(data);
+        });
+    }
+  </script>
+</body>
+</html>
